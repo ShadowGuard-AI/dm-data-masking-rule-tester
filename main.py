@@ -162,15 +162,23 @@ def validate_masking(original_df, masked_df, rules):
                     if not all(re.match(email_regex, str(email)) for email in masked_df[column]):
                         validation_errors.append(f"Column '{column}': Masked values do not conform to email format.")
                 elif rule == "phone_number":
-                    phone_regex = r"^\+?\d{1,3}[-.\s]?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}$"  # Simple phone number regex
+                    # Faker numbers often carry an extension (x1234) and
+                    # 001 or +1 prefixes; the old pattern rejected those, so
+                    # correctly masked columns failed validation most runs.
+                    phone_regex = r"^(\+?\d{1,3}[-.\s]?)?\(?\d{1,4}\)?[-.\s]?\d{1,4}[-.\s]?\d{1,9}(x\d+)?$"
                     if not all(re.match(phone_regex, str(phone)) for phone in masked_df[column]):
                         validation_errors.append(f"Column '{column}': Masked values do not conform to phone number format.")
                 elif rule == "credit_card_number":
-                    credit_card_regex = r"^\d{13,19}$" #Simple credit card format
+                    # Faker also issues 12 digit card numbers; the old
+                    # 13 to 19 range failed those valid replacements.
+                    credit_card_regex = r"^\d{12,19}$"
                     if not all(re.match(credit_card_regex, str(credit)) for credit in masked_df[column]):
                         validation_errors.append(f"Column '{column}': Masked values do not conform to credit card format.")
                 elif rule == "name":
-                    name_regex = r"^[a-zA-Z\s]+$" #Simple name regex
+                    # Titles and punctuation are normal in Faker names
+                    # (Dr., O'Brien, Mary-Jane); the old letters-only
+                    # pattern failed those valid replacements.
+                    name_regex = r"^[a-zA-Z\s.\'-]+$"
                     if not all(re.match(name_regex, str(name)) for name in masked_df[column]):
                         validation_errors.append(f"Column '{column}': Masked values do not conform to name format.")
                 elif rule == "ssn":
@@ -207,8 +215,10 @@ def save_masked_data(df, output_file):
     try:
         df.to_csv(output_file, index=False)
         logging.info(f"Successfully saved masked data to {output_file}")
+        return True
     except Exception as e:
         logging.error(f"Error saving masked data to {output_file}: {e}")
+        return False
 
 def main():
     """
@@ -224,7 +234,8 @@ def main():
         validation_result = validate_masking(data, masked_data, rules)
 
         if args.output:
-            save_masked_data(masked_data, args.output)
+            if not save_masked_data(masked_data, args.output):
+                exit(1)
         else:
             if validation_result:
                 logging.info("Data masking and validation successful.  No output file specified, so data not saved.")
