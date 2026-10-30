@@ -1,3 +1,5 @@
+![Banner](banner.png)
+
 # dm-data-masking-rule-tester
 Validates data masking rules against a sample dataset, verifying that the rules are correctly applied and that sensitive data is effectively protected, reporting on any failures. - Focused on Tools designed to generate or mask sensitive data with realistic-looking but meaningless values
 
