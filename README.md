@@ -11,7 +11,9 @@ Validates data masking rules against a sample dataset, verifying that the rules 
 
 ## Parameters
 - `-h`: Show help message and exit
-- `--output`: No description provided
+- `--output`: Path to save the masked data (optional). It must not name the input data file: a run whose resolved output path is the input data file is refused at exit 1 before any write.
+
+A run that tests nothing does not pass. When the rule set is empty, the run prints "No rules to validate." and exits 1. When the dataset has zero rows, the run prints "No rows to validate." and exits 1. Neither shape prints a validation passed line.
 
 ## License
 Copyright (c) ShadowGuardAI

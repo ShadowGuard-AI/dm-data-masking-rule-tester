@@ -2,6 +2,7 @@ import argparse
 import logging
 import pandas as pd
 from faker import Faker
+from pathlib import Path
 import re
 
 # Configure logging
@@ -227,9 +228,21 @@ def main():
     parser = setup_argparse()
     args = parser.parse_args()
 
+    if args.output and Path(args.output).resolve() == Path(args.data_file).resolve():
+        print("Error: Output file must not be the input data file.")
+        exit(1)
+
     try:
         data = load_data(args.data_file)
         rules = load_rules(args.rule_file)
+
+        if not rules:
+            print("No rules to validate.")
+            exit(1)
+
+        if len(data) == 0:
+            print("No rows to validate.")
+            exit(1)
         masked_data = mask_data(data, rules)
         validation_result = validate_masking(data, masked_data, rules)
 
