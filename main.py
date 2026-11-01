@@ -8,7 +8,9 @@ import re
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Initialize Faker for generating fake data
+# One Faker instance for the whole run, created at import time and never
+# seeded. I accept what that means: no run can be reproduced, and a value
+# that appears ten times in a column gets ten unrelated replacements.
 fake = Faker()
 
 def setup_argparse():
@@ -110,6 +112,9 @@ def mask_data(df, rules):
         pandas.DataFrame: The masked DataFrame.
     """
     masked_df = df.copy()  # Create a copy to avoid modifying the original DataFrame
+    # Each branch below rebuilds the column with one fresh fake per row, in
+    # row order, so the masked frame keeps the original shape and index.
+    # Columns no rule names are copied through exactly as they were.
     for column, rule in rules.items():
         if column in masked_df.columns:
             try:
@@ -153,7 +158,11 @@ def validate_masking(original_df, masked_df, rules):
     validation_errors = []
     for column, rule in rules.items():
         if column in original_df.columns and column in masked_df.columns:
-            # Check for changes in the column
+            # My whole test for a column is these two checks: the column
+            # changed at all, and every new value matches the format pattern
+            # for its rule. I do not check row by row that each value differs
+            # from the one it replaced, so a fake that happened to equal the
+            # original in one row would still pass here.
             if not original_df[column].equals(masked_df[column]):
                 logging.info(f"Column '{column}' was successfully masked.")
 
@@ -246,6 +255,10 @@ def main():
         masked_data = mask_data(data, rules)
         validation_result = validate_masking(data, masked_data, rules)
 
+        # The order here is deliberate to notice: when an output path is
+        # given, the masked data is written before the validation result
+        # decides the exit code below. A run that fails validation still
+        # leaves its output file on disk, and exits 1 afterwards.
         if args.output:
             if not save_masked_data(masked_data, args.output):
                 exit(1)
