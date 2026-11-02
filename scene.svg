@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" role="img" aria-label="The fresco studio in three bands: a wall with cartoon sheets pinned backs outward and even light in the far band, a brush lifted from a jar by a hand, rinsed and set back while the jar water clouds in the middle band, and a trowel smoothing one short stretch of the giornata edge then stopping in the near band">
+<rect width="900" height="300" fill="#f5eedc"/>
+<g>
+<rect x="0" y="0" width="900" height="100" fill="#243a8a"/>
+<rect x="690" y="14" width="170" height="58" fill="#faf8ee" stroke="#3a342c" stroke-width="3"/>
+<g fill="#eee6d0" stroke="#3a342c" stroke-width="2"><rect x="40" y="22" width="92" height="62"/><rect x="160" y="22" width="92" height="62"/><rect x="280" y="22" width="92" height="62"/></g>
+<g fill="#c68422"><circle cx="48" cy="30" r="4"/><circle cx="124" cy="30" r="4"/><circle cx="168" cy="30" r="4"/><circle cx="244" cy="30" r="4"/><circle cx="288" cy="30" r="4"/><circle cx="364" cy="30" r="4"/></g>
+</g>
+<g>
+<rect x="0" y="100" width="900" height="100" fill="#efe7d2"/>
+<rect x="120" y="168" width="660" height="14" fill="#946c3e"/>
+<rect x="180" y="118" width="150" height="52" fill="#785630" stroke="#3a342c" stroke-width="2"/>
+<g><rect x="192" y="128" width="30" height="10" fill="#243a8a"/><rect x="230" y="128" width="30" height="10" fill="#c68422"/><rect x="268" y="128" width="30" height="10" fill="#f5eedc"/><rect x="192" y="146" width="30" height="10" fill="#c68422"/><rect x="230" y="146" width="30" height="10" fill="#3a342c"/><rect x="268" y="146" width="30" height="10" fill="#243a8a"/></g>
+<g stroke="#3a342c" stroke-width="3" fill="none"><rect x="470" y="122" width="72" height="60"/><rect x="580" y="122" width="72" height="60"/></g>
+<rect x="474" y="148" width="64" height="30" fill="#96948a"><animate attributeName="opacity" values="0.35; 0.55; 0.75; 0.9; 0.9" dur="9s" repeatCount="indefinite"/></rect>
+<rect x="584" y="148" width="64" height="30" fill="#96948a" opacity="0.4"/>
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0; 0 -34; 26 -30; 26 -6; 0 0; 0 0" keyTimes="0; 0.25; 0.45; 0.65; 0.8; 1" dur="9s" repeatCount="indefinite"/>
+<line x1="502" y1="128" x2="498" y2="88" stroke="#c68422" stroke-width="6"/>
+<polygon points="493,92 503,92 498,74" fill="#3a342c"/>
+<path d="M462 84 q-22 4 -30 18 l26 8 q6 -12 10 -20 z" fill="#e8c39a" stroke="#3a342c" stroke-width="2"/>
+</g>
+<g stroke="#c68422" stroke-width="5"><line x1="606" y1="126" x2="602" y2="90"/><line x1="624" y1="126" x2="626" y2="90"/></g>
+<g fill="#3a342c"><polygon points="597,94 607,94 602,80"/><polygon points="621,94 631,94 626,80"/></g>
+</g>
+<g>
+<rect x="0" y="200" width="900" height="100" fill="#f5eedc"/>
+<path d="M0 226 L120 218 L250 230 L390 220 L520 232 L660 221 L790 230 L900 222 L900 300 L0 300 Z" fill="#efe4c8"/>
+<path d="M0 226 L120 218 L250 230 L390 220 L520 232 L660 221 L790 230 L900 222" fill="none" stroke="#1e1c18" stroke-width="6"/>
+<path d="M330 224 L470 226" fill="none" stroke="#faf6e8" stroke-width="4"><animate attributeName="opacity" values="0; 0; 1; 1; 0" keyTimes="0; 0.3; 0.55; 0.85; 1" dur="10s" repeatCount="indefinite"/></path>
+<g>
+<animateTransform attributeName="transform" type="translate" values="0 0; 0 0; 118 2; 118 2; 0 0" keyTimes="0; 0.3; 0.55; 0.85; 1" dur="10s" repeatCount="indefinite"/>
+<rect x="238" y="196" width="58" height="12" fill="#c68422" stroke="#3a342c" stroke-width="2"/>
+<polygon points="252,208 322,214 314,236 260,230" fill="#b2b2b2" stroke="#3a342c" stroke-width="2"/>
+<path d="M206 192 q-20 6 -26 20 l24 6 q4 -12 8 -18 z" fill="#e8c39a" stroke="#3a342c" stroke-width="2"/>
+</g>
+</g>
+</svg>
