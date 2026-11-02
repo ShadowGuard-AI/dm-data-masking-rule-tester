@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 36" role="img" aria-label="Minor separator: a short centred brush stroke gradient with a small pastel stick">
+<defs><linearGradient id="g2" x1="0" x2="1"><stop offset="0" stop-color="#d4af37"/><stop offset="1" stop-color="#2e8b57"/></linearGradient></defs>
+<line x1="470" y1="18" x2="730" y2="18" stroke="url(#g2)" stroke-width="3" stroke-linecap="round"/>
+<g transform="rotate(-6 600 18)"><rect x="574" y="12" width="52" height="12" fill="#121212"/><rect x="578" y="15" width="18" height="6" fill="#d4af37"/><rect x="600" y="15" width="18" height="6" fill="#c0c0c0"/></g>
+</svg>
