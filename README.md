@@ -18,14 +18,14 @@ Validates data masking rules against a sample dataset, verifying that the rules 
 ![Major separator](sep-heavy.svg)
 
 ## Install
-`git clone https://github.com/ShadowGuardAI/dm-data-masking-rule-tester`
+`git clone https://github.com/ShadowGuard-AI/dm-data-masking-rule-tester`
 
 > Studio entry: the README clone line drops the organisation hyphen.
 
 ![Minor separator](sep-light.svg)
 
 ## Usage
-`./dm-data-masking-rule-tester [params]`
+`python3 main.py data_file rule_file [options]`
 
 ![Minor separator](sep-light.svg)
 
@@ -44,7 +44,7 @@ A run that tests nothing does not pass. When the rule set is empty, the run prin
 ![Minor separator](sep-light.svg)
 
 ## License
-Copyright (c) ShadowGuardAI
+This project is released under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ![Major separator](sep-heavy.svg)
 
